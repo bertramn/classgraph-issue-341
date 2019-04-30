@@ -25,7 +25,6 @@
     <logback.version>1.2.3</logback.version>
     <junit.jupiter.version>5.4.2</junit.jupiter.version>
     <mockito.version>2.27.0</mockito.version>
-    <hamcrest.version>2.1</hamcrest.version>
     <maven.compiler.version>3.8.0</maven.compiler.version>
     <maven.surefire.version>3.0.0-M3</maven.surefire.version>
     <maven.flatten.version>1.1.0</maven.flatten.version>
@@ -112,13 +111,6 @@
         <artifactId>slf4j-api</artifactId>
         <version>${slf4j.version}</version>
       </dependency>
-      <!-- exclude commons-logging and replace with slf4j (https://www.slf4j.org/faq.html#excludingJCL) -->
-      <dependency>
-        <groupId>commons-logging</groupId>
-        <artifactId>commons-logging</artifactId>
-        <version>99-empty</version>
-        <scope>provided</scope>
-      </dependency>
       <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>jcl-over-slf4j</artifactId>
@@ -156,11 +148,6 @@
         <groupId>org.mockito</groupId>
         <artifactId>mockito-junit-jupiter</artifactId>
         <version>${mockito.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.hamcrest</groupId>
-        <artifactId>hamcrest</artifactId>
-        <version>${hamcrest.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -287,11 +274,25 @@
   <profiles>
     <profile>
       <!-- including this dependency will trigger the failure -->
-      <id>hamcrest</id>
+      <id>hamcrest-new</id>
       <dependencies>
         <dependency>
           <groupId>org.hamcrest</groupId>
           <artifactId>hamcrest</artifactId>
+          <version>2.1</version>
+          <scope>test</scope>
+        </dependency>
+      </dependencies>
+    </profile>
+
+    <profile>
+      <!-- including this dependency will trigger the failure -->
+      <id>hamcrest-old</id>
+      <dependencies>
+        <dependency>
+          <groupId>org.hamcrest</groupId>
+          <artifactId>hamcrest-core</artifactId>
+          <version>1.3</version>
           <scope>test</scope>
         </dependency>
       </dependencies>
