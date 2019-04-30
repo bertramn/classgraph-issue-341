@@ -1,0 +1,11 @@
+<soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap-env:Body>
+    <soap-env:Fault>
+      <faultcode>soap-env:{{ parameters.fault.type }}.{{ parameters.fault.code }}</faultcode>
+      <faultstring>{{ parameters.fault.message }}</faultstring>{{#if parameters.fault.detail}}
+      <detail>
+        <StackTrace>{{ parameters.fault.detail }}</StackTrace>
+      </detail>{{/if}}
+    </soap-env:Fault>
+  </soap-env:Body>
+</soap-env:Envelope>
