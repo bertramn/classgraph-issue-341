@@ -274,7 +274,7 @@
   <profiles>
     <profile>
       <!-- including this dependency will trigger the failure -->
-      <id>hamcrest-new</id>
+      <id>hamcrest</id>
       <dependencies>
         <dependency>
           <groupId>org.hamcrest</groupId>
